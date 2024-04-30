@@ -1,14 +1,11 @@
 import React from "react";
-function Textarea() {
+const Textarea = () => {
   return (
     <> 
     
         
-        <textarea class="h-64   w-1/2  border rounded border-double "></textarea>  
-        
-       
-    
+        <textarea class="h-60   w-1/2 border-black border rounded border-double "></textarea>
     </>
      );
-    }
+    };
     export default Textarea;

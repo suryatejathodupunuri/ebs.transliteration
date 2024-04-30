@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "../../assets/logoAudioMitra.png";
+import Logo from "../../assets/Logo.png";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -23,7 +23,7 @@ const Nav = () => {
         <div className="flex justify-between items-center xl:max-w-7xl xl:mx-auto max-w-full px-1 flex-wrap">
           <Link to="/">
             <div className="flex justify-center">
-              <img src={Logo} alt="logo" className="cursor-pointer mr-4 h-16" />
+              <img src={Logo} alt="logo" className="cursor-pointer mr-2 h-12" />
             </div>
           </Link>
 
@@ -36,30 +36,25 @@ const Nav = () => {
               open ? "block" : "hidden"
             } lg:flex lg:items-center lg:w-auto w-full`}
           >
-            <ul className="text-base text-gray-600 lg:flex lg:justify-between">
+            <ul className="text-sm text-gray-600 lg:flex lg:justify-between">
               <li
-                className={`lg:px-5 py-2 hover:text-blue-500 font-semibold ${
+                className={`lg:px-3 py-1 hover:text-blue-500 font-semibold ${
                   location.pathname === "/" ? "text-green-700" : ""
                 }`}
               >
                 <Link to="/">Home</Link>
               </li>
+        
               <li
-                className={`lg:px-5 py-2 hover:text-blue-500 font-semibold ${
-                  location.pathname === "/converter" ? "text-green-700" : ""
-                }`}
-              >
-                <Link to="/converter">Converter</Link>
-              </li>
-              <li
-                className={`lg:px-5 py-2 hover:text-blue-500 font-semibold ${
+                className={`lg:px-3 py-1 hover:text-blue-500 font-semibold ${
                   location.pathname === "/about" ? "text-green-700" : ""
                 }`}
               >
+              
                 <Link to="/about">About Us</Link>
               </li>
               <li
-                className={`lg:px-5 py-2 hover:text-blue-500 font-semibold ${
+                className={`lg:px-3 py-1 hover:text-blue-500 font-semibold ${
                   location.pathname === "/contact" ? "text-green-700" : ""
                 }`}
               >
