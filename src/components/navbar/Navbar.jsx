@@ -60,8 +60,13 @@ const Nav = () => {
               >
                 <Link to="/contact">Contact Us</Link>
               </li>
-
-              
+              <li
+                className={`lg:px-3 py-1 hover:text-blue-500 font-semibold ${
+                  location.pathname === "/team" ? "text-green-700" : ""
+                }`}
+              >
+                <Link to="/team">Team</Link>
+              </li>
             </ul>
           </nav>
         </div>
