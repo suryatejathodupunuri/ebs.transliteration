@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Transliteration from '../transliteration/Transliteration';
 import Inputdropdown from '../transliteration/Inputdropdown';
 import Outputdropdown from '../transliteration/Outputdropdown';
@@ -8,12 +8,6 @@ import InputTextarea from '../transliteration/InputTextarea';
 import OutputTextarea from '../transliteration/OutputTextarea';
 
 const Home = () => {
-  const [inputText, setInputText] = useState('');
-  const [outputText, setOutputText] = useState('');
-
-  const handleButtonClick = () => {
-    setOutputText('హలో హైదరాబాద్');
-  };
 
   return (
     <div>
@@ -29,13 +23,13 @@ const Home = () => {
           <Outputdropdown />
         </div>
         <div className="w-1/4">
-          <Button onClick={handleButtonClick} />
+          <Button />
         </div>
       </div>
       <br />
       <div className="flex gap-4">
-        <InputTextarea onChange={(e) => setInputText(e.target.value)} />
-        <OutputTextarea text={outputText} />
+        <InputTextarea />
+        <OutputTextarea />
       </div>
     </div>
   );
