@@ -1,5 +1,4 @@
 import React from 'react';
-import Logo from "../../assets/Logo.png";
 
 function AboutUs() {
   return (
@@ -32,8 +31,8 @@ function AboutUs() {
           </p>
         </div>
         <div className="md:w-1/2">
-        <img src={Logo}
-            alt="Ebashasetu logo"
+        <img src="https://webtranslation.bhashini.co.in/static/media/AnuvaadImg.4405e8d8ba5f791de84f.png"
+            alt="Transliteration"
             className="rounded-md shadow-md"
           />
         </div>
