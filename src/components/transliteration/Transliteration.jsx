@@ -20,15 +20,19 @@ const Transliteration = () => {
   
   const handleSubmit = async () => {
     try {
-       const response = await fetch('http://localhost:3001/uppercase', {
-         method: 'POST', // Specifies that this is a POST request
+       const response = await fetch('http://10.2.63.12:5000/transliterate',
+       {
+         method: 'POST', 
          headers: {
-           'Content-Type': 'application/json', // Indicates that the body is JSON
+           'Content-Type': 'application/json', 
          },
-         body: JSON.stringify({ data: fileContent }), // The data to be sent in the request body
+         body: JSON.stringify({"input_string" :fileContent,"source": "hin","target": "tel"})
+         
        });
        const data = await response.json();
-       setResponseData(data.data); // Update the state with the response data
+       console.log(data);
+       const target=data.transliterated_string;
+       setResponseData(target);
     } catch (error) {
        console.error("Error:", error);
     }
@@ -36,17 +40,7 @@ const Transliteration = () => {
 
   return (
     <>
-      <div className="text-center mb-8">
-  <h1 className="mb-2 mt-0 text-3xl font-extrabold leading-tight text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
-    <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
-      Transliteration for Indian Languages
-    </span>
-  </h1>
-  <p className="mb-2 mt-0 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-    Choose a File / Copy Paste text, Select Conversion type and submit.
-  </p>
-</div>
-
+      
 <div className="max-w-2xl mx-auto flex items-center justify-center pt-3 mb-2">
  <label
     className="block mr-4 text-sm font-medium text-gray-900 dark:text-gray-300"

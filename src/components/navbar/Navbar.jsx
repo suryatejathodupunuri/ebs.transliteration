@@ -20,12 +20,17 @@ const Nav = () => {
           boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)"
         }}
       >
-        <div className="flex justify-between items-center xl:max-w-7xl xl:mx-auto max-w-full px-1 flex-wrap">
+        <div className="flex justify-between items-center xl:max-w-7xl xl:mx-auto max-w-full px-0 flex-wrap">
           <Link to="/">
             <div className="flex justify-center">
               <img src={Logo} alt="logo" className="cursor-pointer mr-2 h-12" />
             </div>
           </Link>
+          <h5 className="mb-2 mt-0 text-xs font-extrabold leading-tight text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+    <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+     | Transliteration
+    </span>
+  </h5>
 
           <FiMenu
             className="lg:hidden block h-6 w-6 cursor-pointer"
