@@ -24,13 +24,14 @@ const Nav = () => {
           <Link to="/">
             <div className="flex justify-center">
               <img src={Logo} alt="logo" className="cursor-pointer mr-2 h-12" />
-            </div>
-          </Link>
-          <h5 className="mb-2 mt-0 text-xs font-extrabold leading-tight text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+              <h5 className="mb-2 mt-0 text-xs font-extrabold leading-tight text-gray-900 dark:text-white md:text-3xl lg:text-4xl pt-1.5">
     <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
-     | Transliteration
+      |  Transliteration
     </span>
   </h5>
+            </div>
+          </Link>
+
 
           <FiMenu
             className="lg:hidden block h-6 w-6 cursor-pointer"
