@@ -57,21 +57,21 @@ const Nav = () => {
                 }`}
               >
               
-                <Link to="/about">About Us</Link>
+                <Link to="/trynow">Try Now</Link>
               </li>
               <li
                 className={`lg:px-3 py-1 hover:text-blue-500 font-semibold ${
                   location.pathname === "/contact" ? "text-green-700" : ""
                 }`}
               >
-                <Link to="/contact">Contact Us</Link>
+                <Link to="/contactus">Contact Us</Link>
               </li>
               <li
                 className={`lg:px-3 py-1 hover:text-blue-500 font-semibold ${
                   location.pathname === "/team" ? "text-green-700" : ""
                 }`}
               >
-                <Link to="/team">Team</Link>
+              
               </li>
             </ul>
           </nav>

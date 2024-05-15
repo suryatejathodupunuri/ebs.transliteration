@@ -1,8 +1,9 @@
 import React from "react";
-import Transliteration from "../transliteration/Transliteration";
+import Landing from "../landing/Landing";
+
 
 const Home = () => {
-  return <Transliteration />;
+  return <Landing></Landing>;
 };
 
 export default Home;

@@ -2,9 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Home from "./components/home/Home";
-import About from "./components/about/About";
 import ContactUs from "./components/contactus/Contactus";
-import Team from "./components/team/Team";
+import TryNow from "./components/trynow/TryNow";
 
 const App = () => {
   return (
@@ -15,9 +14,8 @@ const App = () => {
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<ContactUs />} />
-              <Route path="/team" element={<Team />} />
+              <Route path="/trynow" element={<TryNow/>} />
+              <Route path="/contactus" element={<ContactUs />} />
             </Routes>
           </main>
           <Footer />
