@@ -10,7 +10,7 @@ const Nav = () => {
   return (
     <>
       <header
-        className="border-b border-gray-300 py-1 sticky self-start mb-3"
+        className="border-b border-gray-300  sticky self-start mb-3"
         style={{
           top: 0,
           left: 0,
@@ -66,13 +66,9 @@ const Nav = () => {
               >
                 <Link to="/contactus">Contact Us</Link>
               </li>
-              <li
-                className={`lg:px-3 py-1 hover:text-blue-500 font-semibold ${
-                  location.pathname === "/team" ? "text-green-700" : ""
-                }`}
-              >
               
-              </li>
+              
+              
             </ul>
           </nav>
         </div>
