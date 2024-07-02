@@ -47,6 +47,7 @@ const Transliteration = () => {
       console.log(data);
       console.log( inputLang);
     console.log(outputLang);
+    console.log(target);
     } catch (error) {
       console.error("Error:", error);
     }
