@@ -20,7 +20,7 @@ const Nav = () => {
           boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)"
         }}
       >
-        <div className="flex justify-between items-center xl:max-w-7xl xl:mx-auto max-w-full px-0 flex-wrap">
+        <div className="flex justify-between items-center xl:max-w-7xl xl:mx-auto max-w-full  px-0 flex-wrap">
           <Link to="/">
             <div className="flex justify-center">
               <img src={Logo} alt="logo" className="cursor-pointer mr-2 h-12" />
