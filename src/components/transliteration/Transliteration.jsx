@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const Transliteration = () => {
+  // eslint-disable-next-line
   const [file, setFile] = useState(null);
   const [fileContent, setFileContent] = useState("");
   const [responseData, setResponseData] = useState("");
@@ -25,27 +26,26 @@ const Transliteration = () => {
     }
     try {
       const response = await fetch(
-        "https://meity-auth.ulcacontrib.org/ulca/apis/v0/model/compute",
+        "http://127.0.0.1:5000/transliterate",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            modelId: "641d1d6592a6a31751ff1f49",
-            task: "translation",
-            input: [{ source: fileContent }],
-            userId: "550789e49e144fd4b7fa7f1c3c380290",
+            src: inputLang,
+            tar:outputLang,
+            inp: fileContent,
+    
           }),
         }
       );
       const data = await response.json();
-      const target = data.output[0].target;
+      const target = data[0].output;
+      const status=data[1].status;
       setResponseData(target);
-      console.log(data);
-      console.log(inputLang);
-      console.log(outputLang);
       console.log(target);
+      console.log(status);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -105,6 +105,16 @@ const Transliteration = () => {
                 <option value="urd">Urdu</option>
                 <option value="tam">Tamil</option>
                 <option value="mal">Malayalam</option>
+                <option value="ben">Bengali</option>
+                <option value="guj">Gujarathi</option>
+                <option value="pan">Punjabi</option>
+                <option value="kan">Kannada</option>
+                <option value="ori">Oriya</option>
+                <option value="mar">Marathi</option>
+                <option value="asm">Assamese</option>
+                <option value="kok">Konkani</option>
+                <option value="bod">Bodo</option>
+                <option value="nep">Nepali</option>
               </select>
               <div className="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none">
                 <svg
@@ -139,6 +149,16 @@ const Transliteration = () => {
                 <option value="urd">Urdu</option>
                 <option value="tam">Tamil</option>
                 <option value="mal">Malayalam</option>
+                <option value="ben">Bengali</option>
+                <option value="guj">Gujarathi</option>
+                <option value="pan">Punjabi</option>
+                <option value="kan">Kannada</option>
+                <option value="ori">Oriya</option>
+                <option value="mar">Marathi</option>
+                <option value="asm">Assamese</option>
+                <option value="kok">Konkani</option>
+                <option value="bod">Bodo</option>
+                <option value="nep">Nepali</option>
               </select>
               <div className="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none">
                 <svg
