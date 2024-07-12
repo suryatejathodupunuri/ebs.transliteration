@@ -51,6 +51,7 @@ const Transliteration = () => {
       console.log(status);
     } catch (error) {
       console.error("Error:", error);
+      alert("Please try after sometime.")
     } finally {
       setLoading(false);
     }
