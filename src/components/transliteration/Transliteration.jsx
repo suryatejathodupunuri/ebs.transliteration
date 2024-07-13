@@ -8,9 +8,9 @@ const Transliteration = () => {
   const [inputLang, setInputLang] = useState("");
   const [outputLang, setOutputLang] = useState("");
   const [isLoading, setLoading] = useState(false);
+  const isUrdu = inputLang === "urd";
+  const isUrdu_o = outputLang === "urd";
 
-
-  
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
@@ -23,12 +23,12 @@ const Transliteration = () => {
   };
 
   const handleSubmit = async () => {
-    setResponseData('');
+    setResponseData("");
     if (!inputLang || !outputLang) {
       alert("Please select both source and target languages.");
       return;
     }
-    
+
     setLoading(true);
 
     try {
@@ -51,14 +51,14 @@ const Transliteration = () => {
       console.log(status);
     } catch (error) {
       console.error("Error:", error);
-      alert("Please try after sometime.")
+      alert("Please try after sometime.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="flex flex-col h-screen px-10 pt-6">
+    <div className="flex flex-col h-screen px-10 pt-1">
       <div className="flex items-center justify-between bg-gray-200 p-4 shadow-md rounded-lg relative">
         <div className="flex items-center">
           <label className="flex justify-center w-50 h-12 px-2 transition bg-white rounded-md appearance-none cursor-pointer hover:bg-gray-100 focus:outline-none shadow-md hover:shadow-lg">
@@ -78,7 +78,9 @@ const Transliteration = () => {
                 />
               </svg>
               <div className="text-center">
-                <span className="font-large text-bold text-gray-600">Upload  </span>
+                <span className="font-large text-bold text-gray-600">
+                  Upload{" "}
+                </span>
                 <p className="text-xs text-gray-500">.txt files only</p>
               </div>
             </span>
@@ -104,22 +106,22 @@ const Transliteration = () => {
               <option disabled value="">
                 Source
               </option>
-              <option value="eng">English</option>
-              <option value="tel">Telugu</option>
-              <option value="hin">Hindi</option>
-              <option value="urd">Urdu</option>
-              <option value="tam">Tamil</option>
-              <option value="mal">Malayalam</option>
-              <option value="ben">Bengali</option>
-              <option value="guj">Gujarati</option>
-              <option value="pan">Punjabi</option>
-              <option value="kan">Kannada</option>
-              <option value="ori">Oriya</option>
-              <option value="mar">Marathi</option>
               <option value="asm">Assamese</option>
-              <option value="kok">Konkani</option>
+              <option value="ben">Bengali</option>
               <option value="bod">Bodo</option>
+              <option value="guj">Gujarati</option>
+              <option value="hin">Hindi</option>
+              <option value="kan">Kannada</option>
+              <option value="kok">Konkani</option>
+              <option value="mal">Malayalam</option>
+              <option value="mar">Marathi</option>
               <option value="nep">Nepali</option>
+              <option value="ori">Oriya</option>
+              <option value="pan">Punjabi</option>
+              <option value="eng">Roman(Eng)</option>
+              <option value="tam">Tamil</option>
+              <option value="tel">Telugu</option>
+              <option value="urd">Urdu</option>
             </select>
             <div className="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none">
               <svg
@@ -138,7 +140,17 @@ const Transliteration = () => {
               </svg>
             </div>
           </div>
-
+          <button
+  onClick={() => {
+    setInputLang(outputLang);
+    setOutputLang(inputLang);
+    setFileContent(responseData);
+    setResponseData(fileContent);
+  }}
+  className="bg-white-500 font-xlarge text-black font-xbold py-2 px-4 rounded "
+>
+⇆
+</button>
           <div className="relative">
             <select
               name="OutputLanguage"
@@ -150,22 +162,22 @@ const Transliteration = () => {
               <option disabled value="">
                 Target
               </option>
+              <option value="asm">Assamese</option>
+              <option value="ben">Bengali</option>
+              <option value="bod">Bodo</option>
+              <option value="guj">Gujarati</option>
               <option value="hin">Hindi</option>
-              <option value="eng">English</option>
+              <option value="kan">Kannada</option>
+              <option value="kok">Konkani</option>
+              <option value="mal">Malayalam</option>
+              <option value="mar">Marathi</option>
+              <option value="nep">Nepali</option>
+              <option value="ori">Oriya</option>
+              <option value="pan">Punjabi</option>
+              <option value="eng">Roman(Eng)</option>
+              <option value="tam">Tamil</option>
               <option value="tel">Telugu</option>
               <option value="urd">Urdu</option>
-              <option value="tam">Tamil</option>
-              <option value="mal">Malayalam</option>
-              <option value="ben">Bengali</option>
-              <option value="guj">Gujarati</option>
-              <option value="pan">Punjabi</option>
-              <option value="kan">Kannada</option>
-              <option value="ori">Oriya</option>
-              <option value="mar">Marathi</option>
-              <option value="asm">Assamese</option>
-              <option value="kok">Konkani</option>
-              <option value="bod">Bodo</option>
-              <option value="nep">Nepali</option>
             </select>
             <div className="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none">
               <svg
@@ -188,25 +200,35 @@ const Transliteration = () => {
 
         <div className="flex items-center">
           <button
-            className={`bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            onClick={() => window.location.reload()}
+            className="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4"
+          >
+            Clear
+          </button>
+          <button
+            className={`bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ${
+              isLoading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
             onClick={handleSubmit}
             disabled={isLoading}
           >
-            {isLoading ? 'Loading...' : 'Submit'}
+            {isLoading ? "Loading..." : "Submit"}
           </button>
         </div>
       </div>
 
       <div className="flex flex-grow">
         <textarea
+          style={{ direction: isUrdu ? "rtl" : "ltr" }}
           className="w-1/2 h-64 border p-4"
-          placeholder="Enter Text Here."
+          placeholder="Enter Source Text here."
           value={fileContent}
           onChange={(e) => setFileContent(e.target.value)}
         />
         <textarea
+          style={{ direction: isUrdu_o ? "rtl" : "ltr" }}
           className="w-1/2 h-64 border p-4"
-          placeholder="Transliterated text will appear here..."
+          placeholder="Transliterated text will appear here upon clicking Submit."
           value={responseData}
           onChange={(e) => setResponseData(e.target.value)}
         />
