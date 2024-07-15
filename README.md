@@ -5,7 +5,7 @@ React Js.
 Tailwind CSS.  
 
 ## About the Project
-The EBS Transliteration Front-End Application enables users to transliterate text between 16 languages and their 240combinations. These languages include:
+The EBS Transliteration Front-End Application enables users to transliterate text between 16 languages and their 240 combinations. These languages include:
 1. Assamese
 2. Bengali
 3. Bodo
