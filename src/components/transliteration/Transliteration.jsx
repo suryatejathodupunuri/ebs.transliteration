@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 const Transliteration = () => {
   // eslint-disable-next-line
   const [file, setFile] = useState(null);
@@ -10,7 +11,10 @@ const Transliteration = () => {
   const [isLoading, setLoading] = useState(false);
   const isUrdu = inputLang === "urd";
   const isUrdu_o = outputLang === "urd";
-
+  const clearData = () => {
+    setFileContent('');
+    setResponseData('');
+  };
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
@@ -62,28 +66,17 @@ const Transliteration = () => {
       <div className="flex items-center justify-between bg-gray-200 p-4 shadow-md rounded-lg relative">
         <div className="flex items-center">
           <label className="flex justify-center w-50 h-12 px-2 transition bg-white rounded-md appearance-none cursor-pointer hover:bg-gray-100 focus:outline-none shadow-md hover:shadow-lg">
-            <span className="flex items-center space-x-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6 text-gray-600"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                />
-              </svg>
+            <span className="flex flex-col items-center space-y-1">
               <div className="text-center">
-                <span className="font-large text-bold text-gray-600">
-                  Upload{" "}
+                <span className="text-gray-600 text-3xl">
+                  📁
                 </span>
-                <p className="text-xs text-gray-500">.txt files only</p>
+                <span className="text-s font-bold text-gray-600">
+                  Upload
+                </span>
               </div>
             </span>
+
             <input
               type="file"
               name="file_upload"
@@ -141,16 +134,16 @@ const Transliteration = () => {
             </div>
           </div>
           <button
-  onClick={() => {
-    setInputLang(outputLang);
-    setOutputLang(inputLang);
-    setFileContent(responseData);
-    setResponseData(fileContent);
-  }}
-  className="bg-white-500 font-xlarge text-black font-xbold py-2 px-4 rounded "
->
-⇆
-</button>
+            onClick={() => {
+              setInputLang(outputLang);
+              setOutputLang(inputLang);
+              setFileContent(responseData);
+              setResponseData(fileContent);
+            }}
+            className="bg-white-500 font-xlarge text-black font-xbold py-2 px-4 rounded "
+          >
+            ⇆
+          </button>
           <div className="relative">
             <select
               name="OutputLanguage"
@@ -200,15 +193,14 @@ const Transliteration = () => {
 
         <div className="flex items-center">
           <button
-            onClick={() => window.location.reload()}
-            className="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4"
+            onClick={clearData}
+            className=" text-black font-bold py-2 px-4 rounded mr-4"
           >
             Clear
           </button>
           <button
-            className={`bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ${
-              isLoading ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+            className={`bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ${isLoading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             onClick={handleSubmit}
             disabled={isLoading}
           >
@@ -219,19 +211,22 @@ const Transliteration = () => {
 
       <div className="flex flex-grow">
         <textarea
-          style={{ direction: isUrdu ? "rtl" : "ltr" }}
-          className="w-1/2 h-64 border p-4"
-          placeholder="Enter Source Text here."
+          style={{ direction: isUrdu ? "rtl" : "ltr",fontSize: '18px',fontFamily: isUrdu ? 'Nafees Naskh, sans-serif' : 'inherit', }}
+          className="w-1/2 h-80 border p-4"
+          placeholder="Enter Source text here."
           value={fileContent}
           onChange={(e) => setFileContent(e.target.value)}
         />
         <textarea
-          style={{ direction: isUrdu_o ? "rtl" : "ltr" }}
-          className="w-1/2 h-64 border p-4"
-          placeholder="Transliterated text will appear here upon clicking Submit."
+          style={{ direction: isUrdu_o ? "rtl" : "ltr",fontSize: '18px' ,fontFamily: isUrdu_o ? 'Nafees Naskh, sans-serif' : 'inherit',}}
+          
+          className="w-1/2 h-80 border p-4"
+          placeholder="Transliterated text will appear here upon clicking submit."
           value={responseData}
           onChange={(e) => setResponseData(e.target.value)}
         />
+
+
       </div>
     </div>
   );
