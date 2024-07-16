@@ -14,7 +14,7 @@ const Navbar = () => {
           <img src={Logo} alt="logo" className="h-10 mr-2" /> 
           <h5 className="text-s font-bold md:text-lg lg:text-3xl">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-emerald-600">
-              | Transliteration
+               Transliteration
             </span>
           </h5>
         </Link>

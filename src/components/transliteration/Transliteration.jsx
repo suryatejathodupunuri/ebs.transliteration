@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 const Transliteration = () => {
   // eslint-disable-next-line
   const [file, setFile] = useState(null);
@@ -12,8 +11,8 @@ const Transliteration = () => {
   const isUrdu = inputLang === "urd";
   const isUrdu_o = outputLang === "urd";
   const clearData = () => {
-    setFileContent('');
-    setResponseData('');
+    setFileContent("");
+    setResponseData("");
   };
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -55,7 +54,7 @@ const Transliteration = () => {
       console.log(status);
     } catch (error) {
       console.error("Error:", error);
-      alert("Please try after sometime.");
+      alert("Server down, Please try after sometime.");
     } finally {
       setLoading(false);
     }
@@ -68,12 +67,8 @@ const Transliteration = () => {
           <label className="flex justify-center w-50 h-12 px-2 transition bg-white rounded-md appearance-none cursor-pointer hover:bg-gray-100 focus:outline-none shadow-md hover:shadow-lg">
             <span className="flex flex-col items-center space-y-1">
               <div className="text-center">
-                <span className="text-gray-600 text-3xl">
-                  📁
-                </span>
-                <span className="text-s font-bold text-gray-600">
-                  Upload
-                </span>
+                <span className="text-gray-600 text-3xl">📁</span>
+                <span className="text-s font-bold text-gray-600">Upload</span>
               </div>
             </span>
 
@@ -199,8 +194,9 @@ const Transliteration = () => {
             Clear
           </button>
           <button
-            className={`bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ${isLoading ? "opacity-50 cursor-not-allowed" : ""
-              }`}
+            className={`bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ${
+              isLoading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
             onClick={handleSubmit}
             disabled={isLoading}
           >
@@ -210,23 +206,39 @@ const Transliteration = () => {
       </div>
 
       <div className="flex flex-grow">
+      <textarea
+  style={{
+    direction: isUrdu ? "rtl" : "ltr",
+    fontSize: "20px",
+    fontFamily: isUrdu ? "Nafees Web Naskh, sans-serif" : "inherit",
+  }}
+  className="w-1/2 h-80 border p-4"
+  placeholder="Enter Source text here."
+  value={fileContent}
+  onChange={(e) => {
+    const newContent = e.target.value;
+    const maxLength = inputLang === "eng" ? 2000 : 5000;
+
+    if (newContent.length > maxLength) {
+      alert("you have exceeded maximum length");
+      return;
+    }
+
+    setFileContent(newContent);
+  }}
+  maxLength={inputLang === "eng" ? 2000 : 5000}
+/>
         <textarea
-          style={{ direction: isUrdu ? "rtl" : "ltr",fontSize: '18px',fontFamily: isUrdu ? 'Nafees Naskh, sans-serif' : 'inherit', }}
-          className="w-1/2 h-80 border p-4"
-          placeholder="Enter Source text here."
-          value={fileContent}
-          onChange={(e) => setFileContent(e.target.value)}
-        />
-        <textarea
-          style={{ direction: isUrdu_o ? "rtl" : "ltr",fontSize: '18px' ,fontFamily: isUrdu_o ? 'Nafees Naskh, sans-serif' : 'inherit',}}
-          
+          style={{
+            direction: isUrdu_o ? "rtl" : "ltr",
+            fontSize: "20px",
+            fontFamily: isUrdu_o ? "Nafees Web Naskh, sans-serif" : "inherit",
+          }}
           className="w-1/2 h-80 border p-4"
           placeholder="Transliterated text will appear here upon clicking submit."
           value={responseData}
           onChange={(e) => setResponseData(e.target.value)}
         />
-
-
       </div>
     </div>
   );
