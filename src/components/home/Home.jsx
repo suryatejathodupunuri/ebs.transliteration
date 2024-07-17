@@ -11,9 +11,9 @@ const Home = () => {
             <h1 className="text-5xl font-epilogue font-bold mb-4 flex items-start">Bridging</h1>
             <h1 className="text-5xl font-epilogue font-bold mb-4 flex items-start pb-6">Languages</h1>
             <p className="text-lg pr-4 text-left pb-8">
-            Discover seamless transliteration services, bridging language barriers effortlessly. Access 16 languages with our intuitive tool for precise communication.
+              Discover seamless transliteration services, bridging language barriers effortlessly. Access 16 languages with our intuitive tool for precise communication.
             </p>
-            <div className="text-left"> 
+            <div className="text-left">
               <a href="http://localhost:3000/trynow" className="inline-block bg-black text-white font-bold py-2 px-4 rounded">
                 Try Now
               </a>
@@ -34,7 +34,7 @@ const Home = () => {
                   src={principle.image}
                   alt={principle.principle}
                   className="w-24 h-24 object-cover object-center mx-auto mb-4"
-                  style={{ borderRadius: "0%" }} 
+                  style={{ borderRadius: "0%" }}
                 />
                 <h2 className="text-xl font-semibold mb-2 text-center">{principle.principle}</h2>
                 <p className="text-gray-700 text-center">{principle.description}</p>

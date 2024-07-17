@@ -194,9 +194,8 @@ const Transliteration = () => {
             Clear
           </button>
           <button
-            className={`bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ${
-              isLoading ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+            className={`bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ${isLoading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             onClick={handleSubmit}
             disabled={isLoading}
           >
@@ -206,28 +205,28 @@ const Transliteration = () => {
       </div>
 
       <div className="flex flex-grow">
-      <textarea
-  style={{
-    direction: isUrdu ? "rtl" : "ltr",
-    fontSize: "20px",
-    fontFamily: isUrdu ? "Nafees Web Naskh, sans-serif" : "inherit",
-  }}
-  className="w-1/2 h-80 border p-4"
-  placeholder="Enter Source text here."
-  value={fileContent}
-  onChange={(e) => {
-    const newContent = e.target.value;
-    const maxLength = inputLang === "eng" ? 2000 : 5000;
+        <textarea
+          style={{
+            direction: isUrdu ? "rtl" : "ltr",
+            fontSize: "20px",
+            fontFamily: isUrdu ? "Nafees Web Naskh, sans-serif" : "inherit",
+          }}
+          className="w-1/2 h-80 border p-4"
+          placeholder="Enter Source text here."
+          value={fileContent}
+          onChange={(e) => {
+            const newContent = e.target.value;
+            const maxLength = inputLang === "eng" ? 2000 : 5000;
 
-    if (newContent.length > maxLength) {
-      alert("you have exceeded maximum length");
-      return;
-    }
+            if (newContent.length > maxLength) {
+              alert("you have exceeded maximum length");
+              return;
+            }
 
-    setFileContent(newContent);
-  }}
-  maxLength={inputLang === "eng" ? 2000 : 5000}
-/>
+            setFileContent(newContent);
+          }}
+          maxLength={inputLang === "eng" ? 2000 : 5000}
+        />
         <textarea
           style={{
             direction: isUrdu_o ? "rtl" : "ltr",

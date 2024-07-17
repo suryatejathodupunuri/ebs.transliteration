@@ -6,7 +6,7 @@ const ContactUs = () => {
       <div className="bg-white shadow-md rounded-lg p-8 max-w-2xl flex">
         <div className="w-1/2 pr-8">
           <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
-          
+
           <div className="mb-8">
             <h2 className="text-xl font-bold mb-2">Head Office:</h2>
             <p className="mb-2">eBhasha Setu Language Services Private Ltd.</p>
@@ -16,7 +16,7 @@ const ContactUs = () => {
             <p className="mb-2"><span className="font-bold">Phone:</span> +91-9968036443</p>
             <p className="mb-4"><span className="font-bold">Email ID:</span> info@ebhashasetu.com</p>
           </div>
-          
+
           <div className="mb-8">
             <h2 className="text-xl font-bold mb-2">Branch Office:</h2>
             <p className="mb-2">B 77-78, Sindhuja Building, 2nd Floor,</p>
