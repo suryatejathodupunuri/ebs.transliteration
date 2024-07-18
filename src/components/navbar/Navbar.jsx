@@ -9,7 +9,8 @@ const Navbar = () => {
 
   return (
     <header className="w-full bg-white shadow-sm sticky top-0 z-10">
-      <div className="container mx-auto flex justify-between items-center py-2 px-3">
+      {/* removed h-screen*/}
+      <div className=" mx-auto flex justify-between items-center py-2 px-3">
         <Link to="/" className="flex items-center">
           <img src={Logo} alt="logo" className="h-10 mr-2" />
           <h5 className="text-s font-bold md:text-lg lg:text-3xl">

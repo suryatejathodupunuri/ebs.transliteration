@@ -24,11 +24,11 @@ const Home = () => {
           <img src={Bg} alt="background" className="max-w-full max-h-full" />
         </div>
       </div>
-      <div className="container mx-auto py-8 bg-gray-100">
+      <div className="mx-auto py-8 bg-gray-100">
         <h1 className="text-3xl font-bold mb-6 text-center">Principles</h1>
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6 justify-center">
           {principlesData.map((principle, index) => (
-            <div key={index} className="bg-white rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+            <div key={index} className="bg-white rounded-lg overflow-hidden transform">
               <div className="p-4">
                 <img
                   src={principle.image}

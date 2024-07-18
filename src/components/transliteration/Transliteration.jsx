@@ -61,7 +61,7 @@ const Transliteration = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen px-10 pt-1">
+    <div className="flex flex-col px-10 pt-1">
       <div className="flex items-center justify-between bg-gray-200 p-4 shadow-md rounded-lg relative">
         <div className="flex items-center">
           <label className="flex justify-center w-50 h-12 px-2 transition bg-white rounded-md appearance-none cursor-pointer hover:bg-gray-100 focus:outline-none shadow-md hover:shadow-lg">
