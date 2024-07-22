@@ -23,7 +23,7 @@ const Transliteration = () => {
       const fileContent = event.target.result;
       if (fileContent.length > 5000) {
         alert(
-          "The file content exceeds the maximum allowed length of 5000 characters,First 5000 Characters will be considered."
+          "The file content exceeds maximum limit,First 5000 Characters will be considered."
         );
       }
       const limitedContent = fileContent.substring(
@@ -233,14 +233,17 @@ const Transliteration = () => {
                 const maxLength = 5000;
 
                 if (newContent.length > maxLength) {
-                  alert("You have exceeded maximum length");
+                  const trimmedContent = newContent.substring(0, maxLength); 
+                  alert("You have exceeded maximum limit, first 5000 characters will be considered");
+                  setFileContent(trimmedContent);
+
                   return;
                 }
 
                 setFileContent(newContent);
               }}
             />
-            <div className="absolute bottom-2 right-2 text-sm text-gray-500">
+            <div className="absolute bottom-1 right-1 text-sm text-gray-500 ">
               {fileContent.length}/5000
             </div>
           </div>
