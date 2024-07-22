@@ -20,8 +20,19 @@ const Transliteration = () => {
 
     const reader = new FileReader();
     reader.onload = (event) => {
-      setFileContent(event.target.result);
+      const fileContent = event.target.result;
+      if (fileContent.length > 5000) {
+        alert(
+          "The file content exceeds the maximum allowed length of 5000 characters,First 5000 Characters will be considered."
+        );
+      }
+      const limitedContent = fileContent.substring(
+        0,
+        Math.min(fileContent.length, 5000)
+      );
+      setFileContent(limitedContent);
     };
+
     reader.readAsText(selectedFile);
   };
 
@@ -207,27 +218,32 @@ const Transliteration = () => {
 
       <div className="flex flex-col">
         <div className="flex flex-grow">
-          <textarea
-            style={{
-              direction: isUrdu ? "rtl" : "ltr",
-              fontSize: "20px",
-              fontFamily: isUrdu ? "Nafees Web Naskh, sans-serif" : "inherit",
-            }}
-            className="w-full h-80 border p-4 mb-4"
-            placeholder="Enter Source text here."
-            value={fileContent}
-            onChange={(e) => {
-              const newContent = e.target.value;
-              const maxLength = 5000;
+          <div className="relative w-full h-80 border p-4 mb-4">
+            <textarea
+              style={{
+                direction: isUrdu ? "rtl" : "ltr",
+                fontSize: "20px",
+                fontFamily: isUrdu ? "Nafees Web Naskh, sans-serif" : "inherit",
+              }}
+              className="w-full h-full resize-none outline-none"
+              placeholder="Enter Source text here."
+              value={fileContent}
+              onChange={(e) => {
+                const newContent = e.target.value;
+                const maxLength = 5000;
 
-              if (newContent.length > maxLength) {
-                alert("you have exceeded maximum length");
-                return;
-              }
+                if (newContent.length > maxLength) {
+                  alert("You have exceeded maximum length");
+                  return;
+                }
 
-              setFileContent(newContent);
-            }}
-          />
+                setFileContent(newContent);
+              }}
+            />
+            <div className="absolute bottom-2 right-2 text-sm text-gray-500">
+              {fileContent.length}/5000
+            </div>
+          </div>
           <textarea
             style={{
               direction: isUrdu_o ? "rtl" : "ltr",
@@ -240,9 +256,6 @@ const Transliteration = () => {
             onChange={(e) => setResponseData(e.target.value)}
           />
         </div>
-        <p className="text-s font-semibold text-gray-800">
-          {fileContent.length}/5000
-        </p>
       </div>
     </div>
   );
