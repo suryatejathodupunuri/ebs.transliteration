@@ -14,7 +14,7 @@ const Home = () => {
               Discover seamless transliteration services, bridging language barriers effortlessly. Access 16 languages with our intuitive tool for precise communication.
             </p>
             <div className="text-left">
-              <a href="http://localhost:3000/trynow" className="inline-block bg-black text-white font-bold py-2 px-4 rounded">
+              <a href="https://transliteration.ebslab.in/trynow" className="inline-block bg-black text-white font-bold py-2 px-4 rounded">
                 Try Now
               </a>
             </div>
