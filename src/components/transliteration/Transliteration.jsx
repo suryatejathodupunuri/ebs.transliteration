@@ -38,8 +38,12 @@ const Transliteration = () => {
 
   const handleSubmit = async () => {
     setResponseData("");
-    if (!inputLang || !outputLang) {
-      alert("Please select both source and target languages.");
+    if (!inputLang) {
+      alert("Please select a source language.");
+      return;
+  }
+  if (!outputLang) {
+      alert("Please select a target language.");
       return;
     }
 
@@ -72,7 +76,7 @@ const Transliteration = () => {
   };
 
   return (
-    <div className="flex flex-col px-10 pt-1">
+    <div className="flex flex-col px-10 pt-3">
       <div className="flex items-center justify-between bg-gray-200 p-4 shadow-md rounded-lg relative">
         <div className="flex items-center">
           <label className="flex justify-center w-50 h-12 px-2 transition bg-white rounded-md appearance-none cursor-pointer hover:bg-gray-100 focus:outline-none shadow-md hover:shadow-lg">
@@ -233,8 +237,10 @@ const Transliteration = () => {
                 const maxLength = 5000;
 
                 if (newContent.length > maxLength) {
-                  const trimmedContent = newContent.substring(0, maxLength); 
-                  alert("You have exceeded maximum limit, first 5000 characters will be considered");
+                  const trimmedContent = newContent.substring(0, maxLength);
+                  alert(
+                    "You have exceeded maximum limit, first 5000 characters will be considered"
+                  );
                   setFileContent(trimmedContent);
 
                   return;
@@ -259,6 +265,36 @@ const Transliteration = () => {
             onChange={(e) => setResponseData(e.target.value)}
           />
         </div>
+      </div>
+      <div className="flex justify space-x-4">
+
+      <button
+        onClick={() => {
+          setFileContent("sample1 text here");
+          setInputLang("hin");
+        }}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+      Sample 1
+      </button>
+      <button
+        onClick={() => {
+          setFileContent("sample 2 text here");
+          setInputLang("hin");
+        }}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+      Sample 2
+      </button>
+      <button
+        onClick={() => {
+          setFileContent("sample 3 text here");
+          setInputLang("hin");
+        }}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+      Sample 3
+      </button>
       </div>
     </div>
   );

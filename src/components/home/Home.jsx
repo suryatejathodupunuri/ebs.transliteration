@@ -1,6 +1,8 @@
 import React from "react";
 import Bg from '../../assets/Bg.png';
 import principlesData from '../home/principlesdata.json';
+import { Link } from 'react-router-dom';
+
 
 const Home = () => {
   return (
@@ -14,9 +16,9 @@ const Home = () => {
               Discover seamless transliteration services, bridging language barriers effortlessly. Access 16 languages with our intuitive tool for precise communication.
             </p>
             <div className="text-left">
-              <a href="https://transliteration.ebslab.in/trynow" className="inline-block bg-black text-white font-bold py-2 px-4 rounded">
-                Try Now
-              </a>
+            <Link to="/trynow" className="inline-block bg-black text-white font-bold py-2 px-4 rounded">
+          Try Now
+        </Link>
             </div>
           </div>
         </div>
