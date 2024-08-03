@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { url } from '../../creds';
 
 const Transliteration = () => {
   // eslint-disable-next-line
@@ -14,7 +15,7 @@ const Transliteration = () => {
     setFileContent("");
     setResponseData("");
   };
-  const url= "http://127.0.0.1:5000"
+
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
@@ -51,7 +52,7 @@ const Transliteration = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(url+"/transliterate", {
+      const response = await fetch(url+"transliterate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
