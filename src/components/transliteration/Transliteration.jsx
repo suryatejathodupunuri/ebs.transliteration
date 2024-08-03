@@ -14,6 +14,7 @@ const Transliteration = () => {
     setFileContent("");
     setResponseData("");
   };
+  const url= "http://127.0.0.1:5000"
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
@@ -50,7 +51,7 @@ const Transliteration = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/transliterate", {
+      const response = await fetch(url+"/transliterate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -271,7 +272,7 @@ const Transliteration = () => {
       <button
         onClick={() => {
           setFileContent("sample1 text here");
-          setInputLang("hin");
+          setInputLang("eng");
         }}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
@@ -288,8 +289,8 @@ const Transliteration = () => {
       </button>
       <button
         onClick={() => {
-          setFileContent("sample 3 text here");
-          setInputLang("hin");
+          setFileContent(" sample 3 text here   ");
+          setInputLang("urd");
         }}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
