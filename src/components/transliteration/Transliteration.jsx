@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { url } from '../../creds';
+import { url } from "../../creds";
 
 const Transliteration = () => {
   // eslint-disable-next-line
   const [file, setFile] = useState(null);
   const [fileContent, setFileContent] = useState("");
+  const [fileName, setFileName] = useState("");
   const [responseData, setResponseData] = useState("");
   const [inputLang, setInputLang] = useState("");
   const [outputLang, setOutputLang] = useState("");
@@ -14,12 +15,24 @@ const Transliteration = () => {
   const clearData = () => {
     setFileContent("");
     setResponseData("");
+    setFileName("");
   };
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
-
+    const fileName = selectedFile.name;
+    const fileNameLength = fileName.length;
+    if (fileNameLength > 20) {
+      const middlePartStartIndex = 15;
+      const shortenedFileName = `${fileName.slice(
+        0,
+        middlePartStartIndex
+      )}...${fileName.slice(-10)}`;
+      setFileName(shortenedFileName);
+    } else {
+      setFileName(fileName);
+    }
     const reader = new FileReader();
     reader.onload = (event) => {
       const fileContent = event.target.result;
@@ -43,8 +56,8 @@ const Transliteration = () => {
     if (!inputLang) {
       alert("Please select a source language.");
       return;
-  }
-  if (!outputLang) {
+    }
+    if (!outputLang) {
       alert("Please select a target language.");
       return;
     }
@@ -52,7 +65,7 @@ const Transliteration = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(url+"transliterate", {
+      const response = await fetch(url + "transliterate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -81,11 +94,14 @@ const Transliteration = () => {
     <div className="flex flex-col px-10 pt-3">
       <div className="flex items-center justify-between bg-gray-200 p-4 shadow-md rounded-lg relative">
         <div className="flex items-center">
-          <label className="flex justify-center w-50 h-12 px-2 transition bg-white rounded-md appearance-none cursor-pointer hover:bg-gray-100 focus:outline-none shadow-md hover:shadow-lg">
+          <label className="flex justify-center w-50 h-13 px-2 transition bg-white rounded-md appearance-none cursor-pointer hover:bg-gray-100 focus:outline-none shadow-md hover:shadow-lg">
             <span className="flex flex-col items-center space-y-1">
               <div className="text-center">
-                <span className="text-gray-600 text-3xl">📁</span>
+                <span className="text-gray-600 text-xl">📁</span>
                 <span className="text-s font-bold text-gray-600">Upload</span>
+                <div className="text-xs font-bold text-gray-500">
+                  ( .txt files only )
+                </div>
               </div>
             </span>
 
@@ -97,6 +113,9 @@ const Transliteration = () => {
               onChange={handleFileChange}
             />
           </label>
+          <div className="px-3 mt-2 text-sm font-bold text-gray-600">
+            {fileName ? `${fileName}` : ""}
+          </div>
         </div>
 
         <div className="flex space-x-4">
@@ -162,7 +181,10 @@ const Transliteration = () => {
               id="OutputLanguage"
               className="bg-white border border-gray-300 rounded-lg shadow-sm hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pl-8 pr-4 py-2"
               value={outputLang}
-              onChange={(e) => setOutputLang(e.target.value)}
+              onChange={(e) => {
+                setOutputLang(e.target.value);
+                setResponseData("");
+              }}
             >
               <option disabled value="">
                 Target
@@ -224,7 +246,7 @@ const Transliteration = () => {
 
       <div className="flex flex-col">
         <div className="flex flex-grow">
-          <div className="relative w-full h-80 border p-4 mb-4">
+          <div className="relative w-full h-80 border border-black-600 p-4 mb-4">
             <textarea
               style={{
                 direction: isUrdu ? "rtl" : "ltr",
@@ -251,6 +273,15 @@ const Transliteration = () => {
                 setFileContent(newContent);
               }}
             />
+            <div
+              className="absolute top-1 right-1 text-l text-black-500 hover:drop-shadow-xl cursor-pointer pr-1"
+              onClick={() => {
+                setFileContent("");
+                setFileName("");
+              }}
+            >
+              X
+            </div>
             <div className="absolute bottom-1 right-1 text-sm text-gray-500 ">
               {fileContent.length}/5000
             </div>
@@ -261,7 +292,7 @@ const Transliteration = () => {
               fontSize: "20px",
               fontFamily: isUrdu_o ? "Nafees Web Naskh, sans-serif" : "inherit",
             }}
-            className="w-full h-80 border p-4"
+            className="w-full h-80 resize-none outline-none border p-4"
             placeholder="Transliterated text will appear here upon clicking submit."
             value={responseData}
             onChange={(e) => setResponseData(e.target.value)}
@@ -269,34 +300,33 @@ const Transliteration = () => {
         </div>
       </div>
       <div className="flex justify space-x-4">
-
-      <button
-        onClick={() => {
-          setFileContent("sample1 text here");
-          setInputLang("eng");
-        }}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-      Sample 1
-      </button>
-      <button
-        onClick={() => {
-          setFileContent("sample 2 text here");
-          setInputLang("hin");
-        }}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-      Sample 2
-      </button>
-      <button
-        onClick={() => {
-          setFileContent(" sample 3 text here   ");
-          setInputLang("urd");
-        }}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-      Sample 3
-      </button>
+        <button
+          onClick={() => {
+            setFileContent("transliteration system main aap kaa swaagat hai.");
+            setInputLang("eng");
+          }}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Sample Roman
+        </button>
+        <button
+          onClick={() => {
+            setFileContent("ट्रांसलिट्रेशन सिस्टम मैं आप का स्वागत हैं। ");
+            setInputLang("hin");
+          }}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Sample Hindi
+        </button>
+        <button
+          onClick={() => {
+            setFileContent("ٹرانسلیٹریشن سسٹم میں خوش آمدید۔ ");
+            setInputLang("urd");
+          }}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Sample Urdu
+        </button>
       </div>
     </div>
   );
