@@ -7,7 +7,7 @@ const Home = () => {
     <>
       <div className="bg-gray-100 h-screen flex p-4">
         <div className="w-1/2 flex items-center justify-center">
-          <div className="text-black text-center">
+          <div className="pl-6 text-black text-center">
             <h1 className="text-5xl font-epilogue font-bold mb-4 flex items-start">
               Bridging
             </h1>
@@ -30,7 +30,7 @@ const Home = () => {
           </div>
         </div>
         <div className="w-1/2 flex items-center justify-center">
-          <img src={Bg} alt="background" className="max-w-full max-h-full" />
+        <img src={Bg} alt="background" style={{ width: '700px', height: '900px', objectFit: 'contain' }} />
         </div>
       </div>
       
