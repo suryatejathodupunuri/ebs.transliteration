@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { url } from "../../creds";
+import { FaFile } from "react-icons/fa";
 
 const Transliteration = () => {
   // eslint-disable-next-line
@@ -28,7 +29,7 @@ const Transliteration = () => {
       const shortenedFileName = `${fileName.slice(
         0,
         middlePartStartIndex
-      )}...${fileName.slice(-10)}`;
+      )} ... ${fileName.slice(-10)}`;
       setFileName(shortenedFileName);
     } else {
       setFileName(fileName);
@@ -59,6 +60,10 @@ const Transliteration = () => {
     }
     if (!outputLang) {
       alert("Please select a target language.");
+      return;
+    }
+    if (inputLang===outputLang) {
+      alert("Source and Target Languages cannot be same");
       return;
     }
 
@@ -97,7 +102,7 @@ const Transliteration = () => {
           <label className="flex justify-center w-50 h-13 px-2 transition bg-white rounded-md appearance-none cursor-pointer hover:bg-gray-100 focus:outline-none shadow-md hover:shadow-lg">
             <span className="flex flex-col items-center space-y-1">
               <div className="text-center">
-                <span className="text-gray-600 text-xl">📁</span>
+                <span className="text-gray-600 text-xl"><FaFile></FaFile></span>
                 <span className="text-s font-bold text-gray-600">Upload</span>
                 <div className="text-xs font-bold text-gray-500">
                   ( .txt files only )

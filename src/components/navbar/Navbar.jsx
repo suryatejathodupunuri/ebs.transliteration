@@ -8,7 +8,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <header className="w-full bg-white shadow-sm sticky top-0 z-10">
+    <header className="w-full bg-blue-200 shadow-sm sticky top-0 z-10">
       {/* removed h-screen*/}
       <div className=" mx-auto flex justify-between items-center py-2 px-3">
         <Link to="/" className="flex items-center">

@@ -1,14 +1,27 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 
 const Footer = () => {
+  const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   return (
-    <div>
-      <footer className="w-full text-1xl font-bold text-black-800 bg-gray-100 border border-gray-300 py-2 text-center shadow-lg">
+    <>
+      <footer
+        className={`flex justify-center items-center bg-blue-200 py-4 ${
+          isMobile ? "order-3 mt-auto" : "col-span-2 "
+        }`}
+      >
         <small>
-          {new Date().getFullYear()} |<a href="https://ebhashasetu.com/" target="_blank" rel="noopener noreferrer"> Ebhasha Setu Language Services Pvt Ltd | All Rights Reserved</a>
+          {new Date().getFullYear()} |
+          <a
+            href="https://ebhashasetu.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ebhasha Setu Language Services Pvt Ltd | All Rights Reserved
+          </a>
         </small>
       </footer>
-    </div>
+    </>
   );
 };
 
