@@ -104,9 +104,6 @@ const Transliteration = () => {
               <div className="text-center">
                 <span className="text-gray-600 text-xl"><FaFile></FaFile></span>
                 <span className="text-s font-bold text-gray-600">Upload</span>
-                <div className="text-xs font-bold text-gray-500">
-                  ( .txt files only )
-                </div>
               </div>
             </span>
 
@@ -152,22 +149,7 @@ const Transliteration = () => {
               <option value="tel">Telugu</option>
               <option value="urd">Urdu</option>
             </select>
-            <div className="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none">
-              <svg
-                className="h-6 w-6 text-gray-400"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
+            
           </div>
           <button
             onClick={() => {
@@ -211,25 +193,8 @@ const Transliteration = () => {
               <option value="tel">Telugu</option>
               <option value="urd">Urdu</option>
             </select>
-            <div className="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none">
-              <svg
-                className="h-6 w-6 text-gray-400"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
           </div>
         </div>
-
         <div className="flex items-center">
           <button
             onClick={clearData}
@@ -249,61 +214,63 @@ const Transliteration = () => {
         </div>
       </div>
 
-      <div className="flex flex-col">
-        <div className="flex flex-grow">
-          <div className="relative w-full h-80 border border-black-600 p-4 mb-4">
-            <textarea
-              style={{
-                direction: isUrdu ? "rtl" : "ltr",
-                fontSize: "20px",
-                fontFamily: isUrdu ? "Nafees Web Naskh, sans-serif" : "inherit",
-              }}
-              className="w-full h-full resize-none outline-none"
-              placeholder="Enter Source text here."
-              value={fileContent}
-              onChange={(e) => {
-                const newContent = e.target.value;
-                const maxLength = 5000;
+      <div className="flex flex-col space-y-4">
+  <div className="flex flex-grow">
+    <div className="relative w-full h-80 border border-gray-300 rounded-l-lg shadow-md">
+    
+      <textarea
+        style={{
+          direction: isUrdu ? "rtl" : "ltr",
+          fontSize: "20px",
+          fontFamily: isUrdu ? "Nafees Web Naskh, sans-serif" : "inherit",
+        }}
+        className="w-full h-full resize-none outline-none bg-white  rounded-l-md p-6"
+        placeholder="Enter Source text here."
+        value={fileContent}
+        onChange={(e) => {
+          const newContent = e.target.value;
+          const maxLength = 5000;
 
-                if (newContent.length > maxLength) {
-                  const trimmedContent = newContent.substring(0, maxLength);
-                  alert(
-                    "You have exceeded maximum limit, first 5000 characters will be considered"
-                  );
-                  setFileContent(trimmedContent);
+          if (newContent.length > maxLength) {
+            const trimmedContent = newContent.substring(0, maxLength);
+            alert(
+              "You have exceeded maximum limit, first 5000 characters will be considered"
+            );
+            setFileContent(trimmedContent);
 
-                  return;
-                }
+            return;
+          }
 
-                setFileContent(newContent);
-              }}
-            />
-            <div
-              className="absolute top-1 right-1 text-l text-black-500 hover:drop-shadow-xl cursor-pointer pr-1"
-              onClick={() => {
-                setFileContent("");
-                setFileName("");
-              }}
-            >
-              X
-            </div>
-            <div className="absolute bottom-1 right-1 text-sm text-gray-500 ">
-              {fileContent.length}/5000
-            </div>
-          </div>
-          <textarea
-            style={{
-              direction: isUrdu_o ? "rtl" : "ltr",
-              fontSize: "20px",
-              fontFamily: isUrdu_o ? "Nafees Web Naskh, sans-serif" : "inherit",
-            }}
-            className="w-full h-80 resize-none outline-none border p-4"
-            placeholder="Transliterated text will appear here upon clicking submit."
-            value={responseData}
-            onChange={(e) => setResponseData(e.target.value)}
-          />
-        </div>
+          setFileContent(newContent);
+        }}
+      />
+      <div
+        className="absolute top-2 right-2 text-lg text-gray-600 hover:text-red-500 cursor-pointer"
+        onClick={() => {
+          setFileContent("");
+          setFileName("");
+        }}
+      >
+        X
       </div>
+      <div className="absolute bottom-2 right-2 text-sm text-gray-500">
+        {fileContent.length}/5000
+      </div>
+    </div>
+    <textarea
+      style={{
+        direction: isUrdu_o ? "rtl" : "ltr",
+        fontSize: "20px",
+        fontFamily: isUrdu_o ? "Nafees Web Naskh, sans-serif" : "inherit",
+      }}
+      className="w-full h-80 resize-none outline-none border border-gray-300 rounded-r-lg shadow-md p-5 bg-white"
+      placeholder="Transliterated text will appear here upon clicking submit."
+      value={responseData}
+      onChange={(e) => setResponseData(e.target.value)}
+    />
+  </div>
+</div>
+
       <div className="flex justify space-x-4">
         <button
           onClick={() => {
