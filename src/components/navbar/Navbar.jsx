@@ -1,45 +1,84 @@
-import { useState } from "react";
-import { FiMenu } from "react-icons/fi";
-import { Link, useLocation } from "react-router-dom";
-import Logo from "../../assets/Logo.png";
+import React, { useEffect } from 'react';
+import Logo from '../../assets/Logo.png';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const location = useLocation();
+
+  useEffect(() => {
+    const button = document.querySelector('#menu-button');
+    const menu = document.querySelector('#menu');
+
+    const toggleMenu = () => {
+      menu.classList.toggle('hidden');
+    };
+
+    if (button && menu) {
+      button.addEventListener('click', toggleMenu);
+    }
+
+    return () => {
+      if (button && menu) {
+        button.removeEventListener('click', toggleMenu);
+      }
+    };
+  }, []); 
 
   return (
-    <header className="w-full bg-blue-200 shadow-sm sticky top-0 z-10">
-      {/* removed h-screen*/}
-      <div className=" mx-auto flex justify-between items-center py-2 px-3">
-        <Link to="/" className="flex items-center">
-          <img src={Logo} alt="logo" className="h-10 mr-2" />
-          <h5 className="text-s font-bold md:text-lg lg:text-3xl">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-emerald-600">
+    <header>
+      <nav class="
+          flex flex-wrap
+          items-center
+          justify-between
+          w-full
+          py-4
+          md:py-0
+          px-4
+          text-lg text-gray-700
+          bg-white border-t-4 border-red-900
+           relative z-50
+
+        ">
+        <div>
+          <a href="/" class="flex items-center">
+            <img src={Logo} alt="EBS Transliteration Logo" width="120" height="28.125" />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-emerald-600 text-xl font-bold pt-1 ">
               Transliteration
             </span>
-          </h5>
-        </Link>
+          </a>
+        </div>
 
-        <FiMenu
-          className="lg:hidden block h-6 w-6 cursor-pointer"
-          onClick={() => setOpen(!open)}
-        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          id="menu-button"
+          class="h-6 w-6 cursor-pointer md:hidden block"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
 
-        <nav className={`${open ? "block" : "hidden"} lg:flex lg:items-center w-full lg:w-auto`}>
-          <ul className="lg:flex lg:space-x-4 space-y-4 lg:space-y-0 mt-3 lg:mt-0 text-sm text-gray-600">
-            <li className={`lg:px-3 py-1 hover:text-blue-500 font-semibold ${location.pathname === "/" ? "text-green-700" : ""}`}>
-              <Link to="/">Home</Link>
-            </li>
-            <li className={`lg:px-3 py-1 hover:text-blue-500 font-semibold ${location.pathname === "/trynow" ? "text-green-700" : ""}`}>
-              <Link to="/trynow">Try Now</Link>
-            </li>
-            <li className={`lg:px-3 py-1 hover:text-blue-500 font-semibold ${location.pathname === "/contactus" ? "text-green-700" : ""}`}>
-              <Link to="/contactus">Contact Us</Link>
-            </li>
+        <div id="menu" class="hidden w-full md:flex md:items-center md:w-auto">
+          <ul class="
+              pt-4
+              text-base text-gray-700
+              md:flex
+              md:justify-between 
+              md:pt-0
+            ">
+            <li><Link to="/" class="font-bold text-s tracking-widest md:p-4 py-2 block hover:text-green-600" href="#">Home</Link></li>
+            <li><Link to="/trynow" class="font-bold text-s tracking-widest md:p-4 py-2 block hover:text-green-600" href="#">TryNow</Link></li>
+            <li><Link to="/contactus" class="font-bold text-s tracking-widest md:p-4 py-2 block hover:text-green-600" href="#">Contactus</Link></li>
           </ul>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </header>
+
   );
 };
 
