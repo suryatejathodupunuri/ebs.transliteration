@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <>
       
-     {/* 
+     
       <section class="px-2 py-32 bg-white md:px-0">
   <div class="container items-center max-w-6xl px-8 mx-auto xl:px-5">
     <div class="flex flex-wrap items-center sm:-mx-3">
@@ -31,9 +31,9 @@ const Home = () => {
     </div>
   </div>
 </section>
-*/}
 
-{/* second landing   */}
+
+{/* second landing   
 
         <section className="relative">
           <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none" aria-hidden="true">
@@ -73,7 +73,7 @@ const Home = () => {
 
           </div>
         </section>
-    
+    */}
     </>
   );
 };

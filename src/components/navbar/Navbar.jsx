@@ -41,9 +41,11 @@ const Navbar = () => {
         <div>
           <a href="/" class="flex items-center">
             <img src={Logo} alt="EBS Transliteration Logo" width="120" height="28.125" />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-emerald-600 text-xl font-bold pt-1 ">
+            <h5 className="text-s font-bold md:text-lg lg:text-3xl pb-1">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-emerald-600 text-xl font-bold pt-1">
               Transliteration
             </span>
+            </h5>
           </a>
         </div>
 
@@ -71,9 +73,9 @@ const Navbar = () => {
               md:justify-between 
               md:pt-0
             ">
-            <li><Link to="/" class="font-bold text-s tracking-widest md:p-4 py-2 block hover:text-green-600" href="#">Home</Link></li>
-            <li><Link to="/trynow" class="font-bold text-s tracking-widest md:p-4 py-2 block hover:text-green-600" href="#">TryNow</Link></li>
-            <li><Link to="/contactus" class="font-bold text-s tracking-widest md:p-4 py-2 block hover:text-green-600" href="#">Contactus</Link></li>
+            <li><Link to="/" class="font-bold text-s tracking-widest md:p-4 py-2 block hover:text-green-600  " >Home</Link></li>
+            <li><Link to="/trynow" class="font-bold text-s tracking-widest md:p-4 py-2 block hover:text-green-600" >TryNow</Link></li>
+            <li><Link to="/contactus" class="font-bold text-s tracking-widest md:p-4 py-2 block hover:text-green-600">Contactus</Link></li>
           </ul>
         </div>
       </nav>
