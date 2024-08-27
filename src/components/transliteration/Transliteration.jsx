@@ -82,9 +82,8 @@ const Transliteration = () => {
       toast.error("Please enter Source text");
       return;
     } else {
-      toast.info("fetching..", { autoClose: 1500 });
-    }
-
+      toast.info("fetching..");
+  }
     setLoading(true);
 
     try {
@@ -102,14 +101,16 @@ const Transliteration = () => {
       const data = await response.json();
       const target = data[0].output;
       const status = data[1].status;
+      toast.dismiss();
       setResponseData(target);
       console.log(target);
       console.log(status);
     } catch (error) {
       console.error("Error:", error);
       setTimeout(() => {
+        toast.dismiss();
         toast.error("Server down, Please try after sometime.");
-      }, 1000);
+      }, 2000);
     } finally {
       setLoading(false);
     }
